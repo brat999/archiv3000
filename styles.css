@@ -43,6 +43,20 @@ html {
     color: #2600ff74; /* Textfarbe des markierten Textes */
 }
 
+@font-face {
+    font-family: 'JetBrains Mono regular'; /* Name der Schriftart */
+    src: url('JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal; /* oder 'bold', falls die Schriftart eine Fettvariante ist */
+    font-style: normal; /* oder 'italic', falls die Schriftart kursiv ist */
+}
+
+@font-face {
+    font-family: 'AUTHENTIC Sans 90'; /* Name der Schriftart */
+    src: url('authentic-sans-90.woff2') format('woff2');
+    font-weight: normal; /* oder 'bold', falls die Schriftart eine Fettvariante ist */
+    font-style: normal; /* oder 'italic', falls die Schriftart kursiv ist */
+}
+
 ::-webkit-scrollbar { /* Komplett transparente Scrollbar */
     width: 10px;
     background: transparent; /* Kein Hintergrund */
@@ -64,6 +78,10 @@ html {
 ::selection {
     background-color: #3300ff;
     color: #000000;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
 }
 
 .navigation {
