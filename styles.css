@@ -58,18 +58,18 @@ html, body {
 }
 
 .menue {
-    display: inline-flex;                   /* Für flexiblen Innenraum */
+    display: inline-flex; /* Für flexiblen Innenraum */
     position: fixed;     
     justify-content: center;
     align-items: center;
-    color: var(--white);           /* Schriftfarbe */
-    padding: 4px 17px;   
+    color: var(--white);
+    padding: 4px 17px;
     font-family: "JetBrains Mono regular";
     font-size: var(--font-size-titel);
-    gap: 25px;                             /* Für Abstand zwischen Buttons */
-    flex-shrink: 0;
+    gap: 25px;
+    flex-shrink: 1;
     flex-wrap: wrap;
-    z-index: 1000;                          /* Stellt sicher, dass die Buttons im Vordergrund sind */
+    z-index: 1000;
 }
 
 #button_pfeil {
@@ -77,7 +77,7 @@ html, body {
     position: fixed;     
     justify-content: center;
     align-items: center;
-    color: var(--white);           /* Schriftfarbe */
+    color: var(--white);                    /* Schriftfarbe */
     padding: 4px 17px;   
     font-family: "JetBrains Mono regular";
     font-size: var(--font-size-titel);
@@ -191,32 +191,22 @@ a {
 
 .kontakt_text {
     max-width: 500px;
-    padding: 100px 40px 80px 18px;
+    padding: 75px 0px 0px 20px;
     justify-content: center;
     align-items: left;
     font-family: "AUTHENTIC Sans 90";
     font-size: var(--font-size-lauftext);
     line-height: 1.6;
-    text-decoration: none;
-    color: #e8e8e8; /* Optionale Linkfarbe */
-    flex-shrink: 0;
+    color: var(--white);
+    flex-shrink: 1;
     flex-wrap: wrap;
 }
 
-.kontakt_inhalt {
-    display: flex;
-    align-items: flex-start; /* Stellt sicher, dass die GIFs auf der gleichen Höhe beginnen */
-    gap: 20px; /* Abstand zwischen Text und GIFs */
-}
-
-.gifs {
-    max-width: 80%;
+.gif_kontakt {
+    max-width: 100%;
     height: auto; /* Beibehaltung der Proportionen */
     display: flex;
-    flex-direction: column; /* GIFs untereinander anordnen */
-    gap: 10px; /* Abstand zwischen den GIFs */
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    flex-shrink: 0;
+    flex-shrink: 1;
     flex-wrap: wrap;
 }
 
@@ -299,6 +289,23 @@ figcaption {
 }
 
 .video_pp_2 {
+    max-width: 400px;
+    max-height: 400px;
+    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
+    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.video_eo1 {
+    display: flex;
+    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
+    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.video_eo2 {
     max-width: 400px;
     max-height: 400px;
     overflow: hidden; /* Verhindert das Überlaufen der Bilder */
