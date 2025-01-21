@@ -1,64 +1,106 @@
-:root {                             /* global variables (aka cutsom properties) */           
+html, body {                                                                /* html & body properties */   
+    margin: 0;                     
+    padding: 0;                     
+    height: 100%;   /* body nimmt die gesammte höhe ein */
+    width: 100%;    /* body nimmt die gesammte breite ein */
+    user-select: text;
+    background-color: var(--black);
+    color: var(--white);    /* schriftfarbe */
+    overflow-y: auto;   /* aktiviert vertikales scrollen nur bei bedarf */
+    overflow-x: hidden; /* verhindert horizontales scrollen */
+    max-width: none;
+}
+
+:root {                                                                     /* global variables (aka cutsom properties) */           
     --black: #000000;
     --white: #e8e8e8;
     --grey: #8a8a8a;
     --blue: #3300ff;
+    --font-size-pfeil: 3.3rem;
     --font-size-titel: 2rem;
     --font-size-untertitel: 1.5rem;
-    --font-size-lauftext: 1rem;     /* 1rem = 16px, standart schriftgrösse in browsern */
-    --font-size-bildunterschrift: 0.5rem;
+    --font-size-lauftext: 1rem; /* 1rem = 16px, standart schriftgrösse in browsern */
+    --font-size-bildunterschrift: 0.8rem;
 }
 
-html, body {
-    margin: 0;                     
-    padding: 0;                     
-    height: 100%;                   /* Stellt sicher, dass der Body die gesamte Höhe einnimmt */
-    width: 100%;                    /* Nimmt die gesamte Breite ein */
-    user-select: text;
-    background-color: var(--black);
-    color: var(--white);            /* Schriftfarbe */
-    overflow-y: auto;               /* Aktiviert vertikales Scrollen nur bei Bedarf */
-    overflow-x: hidden;             /* verhindert horizontales scrollen */
-    max-width: none;
+a {                                                                         /* links (aka anker tags) */
+    text-decoration: none;
+    color: var(--white);
 }
 
-::selection {                       /* Farbe von makiertem Text */
+img {                                                                       /* bilder */
+    max-width: 100%;
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}   
+
+video, iframe {                                                            /* videos */
+    max-width: 100%; /* verhindert, dass das video breiter als der container wird */
+    max-height: 100%; /* verhindert, dass das video höher als 90% der bildschirmhöhe wird */
+    width: auto; /* stellt sicher, dass die proportionen beibehalten werden */
+    height: auto;
+}
+
+.figcaption {                                                                /* bildunterschrift */           
+    justify-content: left; /* verteilt inhalt links und rechts */
+    font-size: var(--font-size-bildunterschrift);
+    font-family: "AUTHENTIC Sans 90";
+    font-style: normal;
+    color: var(--white);
+    padding: 0px 0px 10px 0px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+@font-face {                                                                /* globale variables schriften */
+    font-family: 'JetBrains Mono regular';  /* name der schriftart */
+    src: url('JetBrainsMono-Regular.woff2') format('woff2');
+    font-weight: normal;    /* oder 'bold', falls es ein bold schnitt ist */
+    font-style: normal; /* oder 'italic', falls es ein kursiv schnitt ist */
+}
+
+@font-face {
+    font-family: 'AUTHENTIC Sans 90';   /* name der schriftart */
+    src: url('authentic-sans-90.woff2') format('woff2');
+    font-weight: normal;    /* oder 'bold', falls es ein bold schnitt ist */
+    font-style: normal;     /* oder 'italic', falls es ein kursiv schnitt ist */
+}
+
+@media (max-width: 768px) {
+    body {
+        width: 85%;
+        padding: 0; /* Reduziert überflüssige Abstände */
+    }
+
+    html, body {
+        font-size: 1rem; /* Kleinere Schriftgröße */
+    }
+}
+  
+::-webkit-scrollbar {                                                       /* transparente scrollbar */
+    width: 10px;
+    --background-scrollbar: transparent;    /* kein hintergrund */
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--background-scrollbar);    /* keine laufleiste */
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--background-scrollbar);    /* Auch beim Hover nichts sichtbar */
+}
+
+::-webkit-scrollbar-corner {    /* weisses rechteck transparent machen */
+    background: var(--backgroun-scrollbar);     /* hintergrund entfernen */
+}
+
+::selection {                                                               /* farbe makierter text */
     background-color: var(--blue);
     color: var(--black);
 }
 
-@font-face {
-    font-family: 'JetBrains Mono regular';                      /* Name der Schriftart */
-    src: url('JetBrainsMono-Regular.woff2') format('woff2');
-    font-weight: normal;                                        /* oder 'bold', falls die Schriftart eine Fettvariante ist */
-    font-style: normal;                                         /* oder 'italic', falls die Schriftart kursiv ist */
-}
-
-@font-face {
-    font-family: 'AUTHENTIC Sans 90';                           /* Name der Schriftart */
-    src: url('authentic-sans-90.woff2') format('woff2');
-    font-weight: normal;                                        /* oder 'bold', falls die Schriftart eine Fettvariante ist */
-    font-style: normal;                                         /* oder 'italic', falls die Schriftart kursiv ist */
-}
-
-::-webkit-scrollbar {                                           /* Komplett transparente Scrollbar */
-    width: 10px;
-    --background-scrollbar: transparent;                        /* Kein Hintergrund */
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--background-scrollbar);                    /* Keine Laufleiste */
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--background-scrollbar);                    /* Auch beim Hover nichts sichtbar */
-}
-
-::-webkit-scrollbar-corner {                                    /* Weißes Rechteck transparent machen */
-    background: var(--backgroun-scrollbar);                     /* Hintergrund entfernen */
-}
-
-.menue {
+.menue {                                                                    /* menue (aka navigation) */
     display: inline-flex; /* Für flexiblen Innenraum */
     position: fixed;     
     justify-content: center;
@@ -73,53 +115,52 @@ html, body {
     z-index: 1000;
 }
 
-#button_pfeil {
-    display: inline-flex;                   /* Für flexiblen Innenraum */
+#button_pfeil {                                                             /* #button_pfeil */
+    display: inline-flex; /* Für flexiblen Innenraum */
     position: fixed;     
     justify-content: center;
     align-items: center;
-    color: var(--white);                    /* Schriftfarbe */
-    padding: 4px 17px;   
+    color: var(--white);
+    padding: 75px 0px 20px 20px;
     font-family: "JetBrains Mono regular";
-    font-size: var(--font-size-titel);
-    gap: 130px;                             /* Für Abstand zwischen Buttons */
-    flex-shrink: 0;
-    flex-wrap: wrap;
-    z-index: 1000;                          /* Stellt sicher, dass die Buttons im Vordergrund sind */
+    font-size: var(--font-size-pfeil);
+    gap: 25px;
+    flex-shrink: 1;
+    flex-wrap: wrap;  
+    z-index: 1000;  
 }
 
-.button-container {
-    display: flex; /* Jeder Button ist ein Block, der nur so breit wie nötig ist */
+.button-container {                                                          /* #button_instagram + #button_mail */
+    display: flex; 
     position: fixed;
     padding: 52px 0px 0px 18px;
     flex-direction: row;
-    gap: 12px; /* Abstand zwischen Buttons */
-    border-radius: 5px; /* Abgerundete Ecken */
-    text-align: center; /* Zentriert den Text im Button */
-    border: none; /* Entfernt standardmäßige Rahmen */
+    gap: 12px; 
+    border-radius: 5px;
+    text-align: center;  
+    border: none;      
 }
 
-#button_instagram, #button_mail {
-    display: flex; /* Jeder Button ist ein Block, der nur so breit wie nötig ist */
-    color: var(--white); /* Textfarbe */
-    background-color: var(--blue); /* Hintergrundfarbe des Buttons */
-    padding: 2px 2px 2px 2px; /* Innenabstand des Buttons */
-    font-family: "JetBrains Mono regular"; /* Schriftart */
-    font-size: var(--font-size-untertitel); /* Schriftgröße */
-    border-radius: 5px; /* Abgerundete Ecken */
-    text-align: center; /* Zentriert den Text im Button */
-    white-space: nowrap; /* Kein Umbruch im Text */
-    border: none; /* Entfernt standardmäßige Rahmen */
+#button_instagram, #button_mail {                                    
+    display: flex;  /* jeder button ist ein block, der nur so breit wie nötig ist */
+    color: var(--white);  
+    background-color: var(--blue); 
+    padding: 2px 2px 2px 2px;   
+    font-family: "JetBrains Mono regular"; 
+    font-size: var(--font-size-untertitel);
+    border-radius: 5px; /* abgerundete ecken */
+    text-align: center; /* zentriert den text im button */
+    white-space: nowrap; /* kein umbruch im text */
+    border: none;   
 }
 
 #button_instagram:hover, #button_mail:hover {
-    background-color: var(--hover-blue); /* Hover-Effekt */
-    cursor: pointer; /* Zeigt den Zeiger auf Hover */
+    background-color: var(--hover-blue); 
+    cursor: pointer; /* zeigt den zeiger auf hover */
 }
 
-/* Grundlayout des Toggles */
-.toggle-switch {
-    display: inline-flex;                   /* Für flexiblen Innenraum */
+.toggle-switch {                                                            /* toggle switch */
+    display: inline-flex; /* für flexiblen innenraum */
     position: fixed;     
     justify-content: center;
     align-items: center;
@@ -130,17 +171,16 @@ html, body {
     outline: 2px solid var(--white);
     flex-shrink: 0;
     flex-wrap: wrap;
-    z-index: 1000;                          /* Stellt sicher, dass die Buttons im Vordergrund sind */
+    z-index: 1000;
     border-radius: 30px;
     transition: background-color 0.2s ease;
 }
 
-/* Hintergrundfarbe, wenn aktiv */
-.toggle-switch.active {
-    justify-content: flex-end;
+.toggle-switch.active {    
+    justify-content: flex-end;  /* animation des switches, wenn er aktiv ist */
 }
 
-.switch { /* Der eigentliche Schalter */
+.switch {   /* der eigentliche schalter */
     width: 20px;
     height: 20px;
     margin: -3px 26px 0px 0px; 
@@ -149,24 +189,11 @@ html, body {
     border-radius: 30px;
 }
 
-.toggle-switch.active .switch { /* Bewegung des Schalters */
-    transform: translateX(47px);
+.toggle-switch.active .switch {                                             
+    transform: translateX(47px);    /* animation des switches, wenn er aktiv ist */
 }
 
-.toggle-container {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    position: fixed;
-    padding: 23px 10px 10px 335px;
-    z-index: 1000;
-}
-  
-.toggle-input {   /* Der Input-Checkbox versteckt */
-    display: none;
-}
-
-.toggle-label::before {   /* Der Kreis im Switch */
+.toggle-label::before { /* Der Kreis im Switch */
     content: "";
     position: absolute;
     width: 20px;
@@ -175,21 +202,12 @@ html, body {
     background-color: var(--white);
     border-radius: 30px;
 }
-  
-.toggle-input:checked + .toggle-label::before {
-    transform: translateX(47px); /* Schiebekreis nach rechts */
-}
 
-a {
-    text-decoration: none;
-    color: var(--white);
-}
-
-.liste_archiv {
+.liste_archiv {                                                             /* textansicht archiv */
     max-width: none;
     padding: 100px 40px 80px 18px;
-    display: grid; /* Grid-Layout */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Rasterlayout */
+    display: grid; /* grid-layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
     gap: 100px 70px;
     flex-direction: column;
     justify-content: center;
@@ -199,25 +217,28 @@ a {
     line-height: 1.3;
     flex-shrink: 0;
     flex-wrap: wrap;
-}
+}                    
 
-.text_archiv {
-    padding: 20px 18px 100px 52px;
-    flex-direction: column;
-    justify-content: center;
-    font-family: "AUTHENTIC Sans 90";
-    font-size: 25px;
-    font-weight: 400;
-    font-style: normal;
-    line-height: 1.9;
-    text-decoration: none;
-    color: #e8e8e8; /* Optionale Linkfarbe */
-    user-select: text; /* Ermöglicht das Markieren des Textes */
+.img_anordnung {                                                            /* bildansicht archiv */
+    width: 100; /* container breite */
+    height: 100; /* container höhe */
+    padding: 70px 20px 20px 40px;
+    display: grid; /* grid-layout */
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 50px;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden; /* verhindert das überlaufen der bilder */
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.kontakt_text {
+.img_archiv:hover {
+    transform: scale(1.1); 
+}
+
+.lauftext-kontakt {                                                          /* kontakt */        
     max-width: 500px;
     padding: 95px 20px 30px 20px;
     justify-content: center;
@@ -230,114 +251,122 @@ a {
     flex-wrap: wrap;
 }
 
-.gif_kontakt {
+.gif_kontakt {                      
     max-width: 100%;
-    height: auto; /* Beibehaltung der Proportionen */
+    height: auto; /* beibehaltung der proportionen */
     display: flex;
     flex-shrink: 1;
     flex-wrap: wrap;
 }
 
-img {
-    max-width: 100%;
-    height: auto; /* Beibehaltung des Seitenverhältnisses */
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}   
-
-.img_anordnung {
-    width: 100; /* Container Breite */
-    height: 100; /* Container Höhe */
-    padding: 20px 20px 20px 40px;
-    display: grid; /* Grid-Layout */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Rasterlayout */
-    gap: 50px;
-    justify-items: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-.img_archiv:hover {
-    transform: scale(1.1); /* Vergrößert den Button */
-}
-
-figcaption {
-    justify-content: space-between; /* Verteilt Inhalt links und rechts */
-    font-size: 10px;       /* Schriftgröße der Bildunterschrift */
+.lauftext-eo {                                                              /* embodied orchestra */
+    max-width: 700px;
+    height: auto;
+    padding: 30px 0px 30px 20px;
+    justify-content: center;
+    align-items: left;
     font-family: "AUTHENTIC Sans 90";
-    font-style: normal;
-    color: #e8e8e8; /* Optionale Linkfarbe */
-    user-select: text; /* Ermöglicht das Markieren des Textes */
-    padding: 10px 0px 20px 5px;
+    font-size: var(--font-size-lauftext);
+    line-height: 1.6;
+    color: var(--white);
+    flex-shrink: 1;
+    flex-wrap: wrap;
+}
+
+#video_eo_01 {
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.img_fsa {
+#img_eo_01, #img_eo_02 {
+    width: 100%;
+    max-width: 200px;
+    height: auto; /* Beibehaltung des Seitenverhältnisses */
+    flex-direction: row;
+    padding: 0px 30px 30px 20px;
+    margin: auto;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.video_fsa_01 {                                                                  /* feministisches streikhaus archiv */
     display: flex;
-    position: sticky;
-    padding: 10px 0px;
-    max-width: 30%;
-    max-height: 30%;
+    max-width: 90%;
+    height: auto;
+    padding: 50px 0px 0px 50px;
     align-items: left;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.gif_park_platz {
+.img_fsa_01 {                                                                
+    display: flex;
+    max-width: 100%;
+    height: auto;
+    padding: 20px 0px 0px 0px;
+    align-items: left;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+}
+
+.lauftext-fsa {                                                             
+    max-width: 700px;
+    padding: 15px 20px 15px 20px;
+    justify-content: center;
+    align-items: left;
+    font-family: "AUTHENTIC Sans 90";
+    font-size: var(--font-size-lauftext);
+    line-height: 1.6;
+    color: var(--white);
+    flex-shrink: 1;
+    flex-wrap: wrap;
+}
+
+.gif_park_platz {                                                               /* park platz */
     max-width: 80%; 
-    height: auto; /* Beibehaltung der Proportionen */
-    gap: 10px; /* Abstand zwischen den GIFs */
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 0 0 0 50px; /* Oben | Rechts | Unten | Links */
+    height: auto; /* beibehaltung der proportionen */
+    gap: 10px; 
+    overflow: hidden; 
+    margin: 0px 0px 0px 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
 .img_park_platz {
     max-width: 80%; 
-    height: auto; /* Beibehaltung der Proportionen */
+    height: auto; 
     gap: 10px;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 0 0 0 50px; /* Oben | Rechts | Unten | Links */
+    overflow: hidden; 
+    margin: 0px 0px 0px 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.video_pp_1 {
+#video_pp_1 {                                                                
     max-width: 400px;
     max-height: 400px;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
+    overflow: hidden; 
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.video_pp_2 {
-    max-width: 400px;
-    max-height: 400px;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
+#video_pp_2 {
+    max-width: 20px;
+    max-height: 40px;
+    overflow: hidden; 
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
-.video_eo1 {
-    display: flex;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-.video_eo2 {
-    max-width: 400px;
-    max-height: 400px;
-    overflow: hidden; /* Verhindert das Überlaufen der Bilder */
-    margin: 50px 50px 50px 50px; /* Oben | Rechts | Unten | Links */
+#bildtafel_1 {                                                                /* bildtafel */
+    max-width: 80%; 
+    height: auto; /* beibehaltung der proportionen */
+    gap: 10px;
+    overflow: hidden; 
+    margin: 0 0 0 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
 }
