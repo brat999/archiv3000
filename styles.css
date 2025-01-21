@@ -3,9 +3,10 @@
     --white: #e8e8e8;
     --grey: #8a8a8a;
     --blue: #3300ff;
-    --font-size-bildunterschrift: 0.5rem;
-    --font-size-lauftext: 1rem;     /* 1rem = 16px, standart schriftgrösse in browsern */
     --font-size-titel: 2rem;
+    --font-size-untertitel: 1.5rem;
+    --font-size-lauftext: 1rem;     /* 1rem = 16px, standart schriftgrösse in browsern */
+    --font-size-bildunterschrift: 0.5rem;
 }
 
 html, body {
@@ -85,6 +86,35 @@ html, body {
     flex-shrink: 0;
     flex-wrap: wrap;
     z-index: 1000;                          /* Stellt sicher, dass die Buttons im Vordergrund sind */
+}
+
+.button-container {
+    display: flex; /* Jeder Button ist ein Block, der nur so breit wie nötig ist */
+    position: fixed;
+    padding: 52px 0px 0px 18px;
+    flex-direction: row;
+    gap: 12px; /* Abstand zwischen Buttons */
+    border-radius: 5px; /* Abgerundete Ecken */
+    text-align: center; /* Zentriert den Text im Button */
+    border: none; /* Entfernt standardmäßige Rahmen */
+}
+
+#button_instagram, #button_mail {
+    display: flex; /* Jeder Button ist ein Block, der nur so breit wie nötig ist */
+    color: var(--white); /* Textfarbe */
+    background-color: var(--blue); /* Hintergrundfarbe des Buttons */
+    padding: 2px 2px 2px 2px; /* Innenabstand des Buttons */
+    font-family: "JetBrains Mono regular"; /* Schriftart */
+    font-size: var(--font-size-untertitel); /* Schriftgröße */
+    border-radius: 5px; /* Abgerundete Ecken */
+    text-align: center; /* Zentriert den Text im Button */
+    white-space: nowrap; /* Kein Umbruch im Text */
+    border: none; /* Entfernt standardmäßige Rahmen */
+}
+
+#button_instagram:hover, #button_mail:hover {
+    background-color: var(--hover-blue); /* Hover-Effekt */
+    cursor: pointer; /* Zeigt den Zeiger auf Hover */
 }
 
 /* Grundlayout des Toggles */
@@ -175,7 +205,6 @@ a {
     padding: 20px 18px 100px 52px;
     flex-direction: column;
     justify-content: center;
-    align-items: left;
     font-family: "AUTHENTIC Sans 90";
     font-size: 25px;
     font-weight: 400;
@@ -184,14 +213,13 @@ a {
     text-decoration: none;
     color: #e8e8e8; /* Optionale Linkfarbe */
     user-select: text; /* Ermöglicht das Markieren des Textes */
-    align-items: left;
     flex-shrink: 0;
     flex-wrap: wrap;
 }
 
 .kontakt_text {
     max-width: 500px;
-    padding: 75px 0px 0px 20px;
+    padding: 95px 20px 30px 20px;
     justify-content: center;
     align-items: left;
     font-family: "AUTHENTIC Sans 90";
