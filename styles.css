@@ -69,7 +69,7 @@ video, iframe {                                                            /* vi
 
 @media (max-width: 768px) {
     body {
-        width: 85%;
+        width: 100%;
         padding: 0; /* Reduziert überflüssige Abstände */
     }
 
