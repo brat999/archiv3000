@@ -55,21 +55,21 @@ video, iframe {                                                            /* vi
 
 @font-face {                                                                /* globale variables schriften */
     font-family: 'JetBrains Mono regular';  /* name der schriftart */
-    src: url('JetBrainsMono-Regular.woff2') format('woff2');
+    src: url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
     font-weight: normal;    /* oder 'bold', falls es ein bold schnitt ist */
     font-style: normal; /* oder 'italic', falls es ein kursiv schnitt ist */
 }
 
 @font-face {
     font-family: 'AUTHENTIC Sans 90';   /* name der schriftart */
-    src: url('authentic-sans-90.woff2') format('woff2');
+    src: url('../fonts/authentic-sans-90.woff2') format('woff2');
     font-weight: normal;    /* oder 'bold', falls es ein bold schnitt ist */
     font-style: normal;     /* oder 'italic', falls es ein kursiv schnitt ist */
 }
 
 @font-face {
     font-family: 'IBM Plex Mono';   /* name der schriftart */
-    src: url('fonts/IBMPlexMono-Regular.ttf') format('ttf');
+    src: url('../fonts/IBMPlexMono-Regular.ttf') format('ttf');
     font-weight: normal;    /* oder 'bold', falls es ein bold schnitt ist */
     font-style: normal;     /* oder 'italic', falls es ein kursiv schnitt ist */
 }
