@@ -56,14 +56,14 @@ video, iframe {                                                            /* vi
 
 @font-face {
     font-family: 'authentic-sans';
-    src: url('authentic-sans-90.woff2') format('woff2');
+    src: url('../authentic-sans-90.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'IBMPlexMono';
-    src: url('IBMPlexMono.woff2') format('woff2');
+    src: url('../IBMPlexMono.woff2') format('woff2');
 }
 
 @media (max-width: 768px) {
