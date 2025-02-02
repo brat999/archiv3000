@@ -17,33 +17,106 @@
 		</nav>
 		<div class="container-project"> <!--container-project-->
 			<div>	
-				<img src="füll.png" class="füll">
-				<p class="figcaption">seiten, 2024</p>
-			</div>				
+				<img src="ag_bild_1.png" class="füll">
+			</div>
 			<div class="lauftext-project">	
-				<p>ascii generator zine</p>
-				<p>	bilder scan zhdk
-				</p>
-			<div>
-				<img src="füll.png" class="füll">	
-				<p class="figcaption">seiten, 2024</p>
-			</div>
-			<div>
-				<p>
-				Prozess Prozess, idee, code usw. vlt generator direkt hier zum ausprobieren oder code zum kopieren?
+				<p>DIY  ASCII generator zine</p>
+				<p>	Der Generator wurde mit Python programmiert und basiert auf
+					ASCII (American Standard Code for Information Interchange).
+					Die 7-Bit-Zeichenkodierung enthält unter anderem 95 druckbare Zeichen. 
 				</p>
 			</div>
-			<div class="no-dead-end-title">
+			<div>	
+				<img src="ag_bild_6.png" class="füll">
+			</div>
+			<div>	
+				<img src="ag_bild_17.png" class="füll">
+			</div>
+			<div class="lauftext-project">	
+				<p>	Das Zine entstand in Verbindung mit dem Projekt "Time Out for Some Zine Love" 
+					an der F+F Schule für Kunst und Design, mit der Aufgabenstellung eine persönliche Sammlung
+					zu publizieren.
+				</p>
+			</div>
+			<div>	
+				<img src="ag_bild_11.png" class="füll">
+			</div>
+			<div>	
+				<img src="ag_bild_18.png" class="füll">
+			</div>
+			<div>	
+				<img src="ag_bild_12.png" class="füll">
+			</div>
+			<div class="lauftext-project">
+				<p>	Den Code für den Generator findest du am Ende dieser Seite.
+					Tipp: Für die optimale Darstellung in einem Textdokument
+					müssen die Zeichen mit einer mono spaced font gesetzt sein. 
+				</p>
+			</div>
+			<div>	
+				<img src="ag_bild_16.png" class="füll">
+			</div>	
+			<div>	
+				<img src="ag_bild_14.png" class="füll">
+			</div>
+			<div>	
+				<img src="ag_bild_19.png" class="füll">
+			</div>												
+			<div class="lauftext-project">
+				<p>copy paste the python code here:</p>
+				<p>-----------------</p>
+				<p>import PIL.Image</p>
+				<p id="kommentar_py"># ASCII characters used to build the output text</p>
+				<p>ASCII_CHARS = ["‹","!","#","Ç","-","_","#","?","“","≠"," "]</p>
+				<p id="kommentar_py"># resize image according to a new width</p>
+				<p>def resize_image(image, new_width=100):</p>
+				<p>width, height = image.size</p>
+				<p>ratio = height / width</p>
+				<p>new_height = int(new_width * ratio)</p>
+				<p>resized_image = image.resize((new_width, new_height))</p>
+				<p>return(resized_image)</p>
+				<p id="kommentar_py"># convert each pixel to grayscale</p>
+				<p>def grayify(image):</p>
+				<p>grayscale_image = image.convert("L")</p>
+				<p>return(grayscale_image)</p>
+				<p id="kommentar_py"># convert pixels to a string of ASCII characters</p>
+				<p>def pixels_to_ascii(image):</p>
+				<p>pixels = image.getdata()</p>
+				<p>characters = "".join([ASCII_CHARS[pixel//25] for pixel in pixels])</p>
+				<p>return(characters)</p>
+				<p>def main(new_width=100):</p>
+				<p id="kommentar_py"># attempt to open image from user-input</p>
+				<p>path = input("enter a valid pathname to an image:\n")</p>
+				<p>try:</p>
+				<p>image = PIL.Image.open(path)</p>
+				<p>except:</p>
+				<p>print(path, "is not a valid pathname to an image.")</p>
+				<p>return</p>
+				<p id="kommentar_py"># convert image to ASCII</p>
+				<p>new_image_data = pixels_to_ascii(grayify(resize_image(image)))</p>
+				<p id="kommentar_py"># format</p>
+				<p>pixel_count = len(new_image_data)</p>
+				<p>ascii_image = "\n".join(new_image_data[i:(i+new_width)] for i in range(0, pixel_count, new_width))</p>
+				<p id="kommentar_py"># print result</p>
+				<p>print(ascii_image)</p>
+				<p id="kommentar_py"># save result to "ascii_image.txt"</p>
+				<p>with open("ascii_image.txt", "w") as f:</p>
+				<p>f.write(ascii_image)</p>
+				<p id="kommentar_py"># Start the program</p>
+				<p>if __name__ == "__main__":</p>
+				<p>main()</p>
+			</div>
+			<div class="lauftext-project">
 				<p>-----------------
 				   ähnliche Projekte
 				   -----------------</p>
 			</div>
-			<div class="no-dead-end-names">
-				<a href="../park_platz/park_platz.html">park platz</a>
-				<a href="../park_platz/park_platz.html">park platz</a>
-				<a href="../park_platz/park_platz.html">park platz</a>
-				<a href="../park_platz/park_platz.html">park platz</a>
+			<div class="lauftext-project">
+			<p><a href="../park_platz/park_platz.html">park platz</a></p>
+			<p><a href="../park_platz/park_platz.html">park platz</a></p>
+			<p><a href="../park_platz/park_platz.html">park platz</a></p>
 			</div>
+		</div>
 		</div>
 	</main>
 </body>

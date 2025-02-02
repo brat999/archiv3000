@@ -16,6 +16,7 @@ html, body {                                                                /* h
     --white: #e8e8e8;
     --grey: #8a8a8a;
     --blue: #3300ff;
+    --green: #40ff00;
     --font-size-pfeil: 3.3rem;
     --font-size-titel: 2rem;
     --font-size-untertitel: 1.5rem;
@@ -129,7 +130,7 @@ video, iframe {                                                            /* vi
     display: inline-flex; /* Für flexiblen Innenraum */
     position: fixed;     
     color: var(--white);
-    padding: 0px 0px px 0px;
+    padding: 0px 0px 0px 0px;
     font-family: "IBM Plex Mono";
     font weight: normal;
     font style: normal;
@@ -143,7 +144,7 @@ video, iframe {                                                            /* vi
 .container-project {
     margin: 0;
     height: auto;
-    padding: 0px 0px 0px 20px;
+    padding: 50px 0px 0px 20px;
 }
 
 .lauftext-project {                                                             
@@ -155,6 +156,19 @@ video, iframe {                                                            /* vi
     font-size: var(--font-size-lauftext);
     line-height: 1.6;
     color: var(--white);
+    flex-shrink: 1;
+    flex-wrap: wrap;
+}
+
+#kommentar_py {                                                             
+    max-width: 700px;
+    padding: 0px 20px 15px 0px;
+    justify-content: center;
+    align-items: left;
+    font-family: "AUTHENTIC Sans 90";
+    font-size: var(--font-size-lauftext);
+    line-height: 1.6;
+    color: var(--green);
     flex-shrink: 1;
     flex-wrap: wrap;
 }
@@ -317,20 +331,10 @@ video, iframe {                                                            /* vi
     flex-wrap: wrap;
 }
 
-#video_eo_01 {
-    width: 100%;
-    max-width: 800px;
-    margin: auto;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-#img_eo_01, #img_eo_02 {
-    width: 100%;
-    max-width: 200px;
-    height: auto; /* Beibehaltung des Seitenverhältnisses */
-    flex-direction: row;
-    padding: 0px 30px 30px 20px;
+.img-eo {
+    width: 50%;
+    height: auto;
+    max-width: 400px;
     margin: auto;
     flex-shrink: 0;
     flex-wrap: wrap;
