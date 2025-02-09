@@ -1,50 +1,85 @@
-html, body {                                                                /* html & body properties */   
+html, body { /* html & body properties */   
     margin: 0;                     
     padding: 0;                     
-    height: 100%;   /* body nimmt die gesammte höhe ein */
-    width: 100%;    /* body nimmt die gesammte breite ein */
+    height: 100%;  
+    width: 100%;   
     user-select: text;
     background-color: var(--black);
-    color: var(--white);    /* schriftfarbe */
-    overflow-y: auto;   /* aktiviert vertikales scrollen nur bei bedarf */
-    overflow-x: hidden; /* verhindert horizontales scrollen */
+    color: var(--white);   
+    overflow-y: auto;   /* vertical scrolling */
+    overflow-x: hidden; /* no horizontal scrolling */
     max-width: none;
 }
 
-:root {                                                                     /* global variables (aka cutsom properties) */           
-    --black: #000000;
-    --white: #e8e8e8;
-    --grey: #8a8a8a;
-    --blue: #3300ff;
-    --green: #40ff00;
-    --font-size-pfeil: 3.3rem;
-    --font-size-titel: 2rem;
-    --font-size-untertitel: 1.5rem;
-    --font-size-lauftext: 1rem; /* 1rem = 16px, standart schriftgrösse in browsern */
-    --font-size-bildunterschrift: 0.8rem;
+:root { /* global variables aka cutsom properties */           
+    --black: #000000; /* background */
+    --white: #e8e8e8; /* text */
+    --grey: #8a8a8a; /* interactive ui elements */
+    --blue: #3300ff; /* text selection, button background, highlighted words etc. */
+    --green: #40ff00; /* highlighted words */
+    --font-size-titel: 2rem; /* font size headline */
+    --font-size-untertitel: 1.5rem; /* font size subline */
+    --font-size-lauftext: 1rem; /* 1rem = 16px, standart browser font size */ /* font size paragraph */
+    --font-size-bildunterschrift: 0.8rem; /* font size figcaption */
 }
 
-a {                                                                         /* links (aka anker tags) */
+@font-face { /* font authentic sans */
+    font-family: 'authentic-sans';
+    src: url('../authentic-sans-90.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face { /* font IBM Plex Mono */
+    font-family: 'IBMPlexMono';
+    src: url('../IBMPlexMono.woff2') format('woff2');
+}
+  
+::-webkit-scrollbar { /* transparent scrollbar */
+    width: 10px;
+    --background-scrollbar: transparent;    
+}
+
+::-webkit-scrollbar-thumb {
+    background: transparent;  
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: transparent;    
+}
+
+::-webkit-scrollbar-corner {    
+    background: transparent;     
+}
+
+::selection { /* selected text */
+    background-color: var(--blue);
+    color: var(--black);
+}
+
+a { /* links */
     text-decoration: none;
     color: var(--white);
+    cursor: pointer;
 }
 
-img {                                                                       /* bilder */
+img { /* images */
+    height: auto; 
     max-width: 100%;
-    height: auto; /* Beibehaltung des Seitenverhältnisses */
     flex-shrink: 0;
     flex-wrap: wrap;
 }   
 
-video, iframe {                                                            /* videos */
-    max-width: 100%; /* verhindert, dass das video breiter als der container wird */
-    max-height: 100%; /* verhindert, dass das video höher als 90% der bildschirmhöhe wird */
-    width: auto; /* stellt sicher, dass die proportionen beibehalten werden */
+video, iframe { /* videos */
+    max-width: 100%;
+    height: auto;
+    width: auto; 
     height: auto;
 }
 
-.figcaption {                                                                /* bildunterschrift */           
-    justify-content: left; /* verteilt inhalt links und rechts */
+.figcaption { 
+    height: auto;           
+    justify-content: left;
     font-size: var(--font-size-bildunterschrift);
     font-family: "authentic-sans";
     font-style: normal;
@@ -54,60 +89,56 @@ video, iframe {                                                            /* vi
     flex-wrap: wrap;
 }
 
-@font-face {
-    font-family: 'authentic-sans';
-    src: url('../authentic-sans-90.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'IBMPlexMono';
-    src: url('../IBMPlexMono.woff2') format('woff2');
-}
-
-@media (max-width: 768px) {
-    body {
-        width: 100%;
-        padding: 0; /* Reduziert überflüssige Abstände */
-    }
-
-    html, body {
-        font-size: 1rem; /* Kleinere Schriftgröße */
-    }
-}
-  
-::-webkit-scrollbar {                                                       /* transparente scrollbar */
-    width: 10px;
-    --background-scrollbar: transparent;    /* kein hintergrund */
-}
-
-::-webkit-scrollbar-thumb {
-    background: var(--background-scrollbar);    /* keine laufleiste */
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: var(--background-scrollbar);    /* Auch beim Hover nichts sichtbar */
-}
-
-::-webkit-scrollbar-corner {    /* weisses rechteck transparent machen */
-    background: var(--backgroun-scrollbar);     /* hintergrund entfernen */
-}
-
-::selection {                                                               /* farbe makierter text */
-    background-color: var(--blue);
-    color: var(--black);
-}
-
-.container-index {
-    height: auto;                                 /* menue (aka navigation) */ 
+.container-index { /* container index */
+    height: auto;                               
     padding: 0px 0px 0px 0px;
     flex-shrink: 1;
     flex-wrap: wrap;
 }
 
-.menue {                                                                    /* menue (aka navigation) */
-    display: inline-flex; /* Für flexiblen Innenraum */
+.container-menue { /* container menue */             
+    height: auto;                               
+    display: inline-flex; 
+    position: fixed;     
+    color: var(--white);
+    padding: 0px 0px 0px 0px;
+    font-family: "IBMPlexMono";
+    font weight: normal;
+    font style: normal;
+    font-size: var(--font-size-titel);
+    gap: 25px;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    z-index: 1000;
+}
+
+.button-container { /* container buttons instagram, mail */
+    height: auto;
+    display: flex; 
+    position: fixed;
+    padding: 52px 0px 0px 18px;
+    flex-direction: row;
+    gap: 12px; 
+    border-radius: 5px;
+    text-align: center;  
+    border: none;      
+}
+
+.container-project { /* container projects */
+    margin: 0;
+    height: auto;
+    padding: 50px 20px 0px 20px;
+}
+
+.container-kontakt { /* container kontakt */
+    margin: 0;
+    height: auto;
+    padding: 10px 0px 0px 20px;
+}
+
+.menue { /* buttons menue */
+    height: auto;
+    display: inline-flex; 
     position: fixed;     
     justify-content: center;
     align-items: center;
@@ -121,37 +152,26 @@ video, iframe {                                                            /* vi
     flex-shrink: 1;
     flex-wrap: wrap;
     z-index: 1000;
+    user-select: none;
 }
 
-.container-menue {                                   
-    height: auto;                                 /* menue (aka navigation) */
-    display: inline-flex; /* Für flexiblen Innenraum */
-    position: fixed;     
-    color: var(--white);
-    padding: 0px 0px 0px 0px;
-    font-family: "IBMPlexMono";
-    font weight: normal;
-    font style: normal;
-    font-size: var(--font-size-titel);
-    gap: 25px;
-    flex-shrink: 1;
+.index_grid { /* index image grid */
+    width: 100; 
+    height: 100;
+    padding: 70px 20px 20px 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
+    gap: 50px;
+    justify-items: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
     flex-wrap: wrap;
-    z-index: 1000;
 }
 
-.container-project {
-    margin: 0;
-    height: auto;
-    padding: 50px 20px 0px 20px;
-}
-
-.container-kontakt {
-    margin: 0;
-    height: auto;
-    padding: 10px 0px 0px 20px;
-}
-
-.lauftext-project {                                                             
+.lauftext-project { /* paragraph text font size */
+    height: auto;                                                             
     max-width: 700px;
     padding: 0px 0px 15px 0px;
     justify-content: center;
@@ -164,97 +184,7 @@ video, iframe {                                                            /* vi
     flex-wrap: wrap;
 }
 
-.lauftext-code {                                                             
-    max-width: 400px;
-    height: auto;
-    padding: 10px 20px 10px 20px;
-    justify-content: left;
-    display: inline-flex; /* Für flexiblen Innenraum */
-    font-family: "authentic-sans";
-    font-size: var(--font-size-bildunterschrift);
-    line-height: 1.6;
-    color: var(--white);
-    background-color: #8a8a8a;
-    border-radius: 12px;
-    flex-shrink: 1;
-    flex-wrap: wrap;
-}
-
-#kommentar_py {                                                             
-    max-width: 400px;
-    font-family: "authentic-sans";
-    font-size: var(--font-size-bildunterschrift);
-    line-height: 1.6;
-    color: var(--green);
-    flex-shrink: 1;
-    flex-wrap: wrap;
-}
-
-.button-container {                                                          /* #button_instagram + #button_mail */
-    display: flex; 
-    position: fixed;
-    padding: 52px 0px 0px 18px;
-    flex-direction: row;
-    gap: 12px; 
-    border-radius: 5px;
-    text-align: center;  
-    border: none;      
-}
-
-#button_instagram, #button_mail {                                    
-    display: flex;  /* jeder button ist ein block, der nur so breit wie nötig ist */
-    color: var(--white);  
-    background-color: var(--blue); 
-    padding: 2px 2px 2px 2px;   
-    font-family: "IBMPlexMono"; 
-    font-size: var(--font-size-untertitel);
-    border-radius: 5px; /* abgerundete ecken */
-    text-align: center; /* zentriert den text im button */
-    white-space: nowrap; /* kein umbruch im text */
-    border: none;   
-}
-
-#button_instagram:hover, #button_mail:hover {
-    background-color: var(--hover-blue); 
-    cursor: pointer; /* zeigt den zeiger auf hover */
-}
-
-.liste_archiv {                                                             /* textansicht archiv */
-    max-width: none;
-    padding: 100px 40px 80px 18px;
-    display: grid; /* grid-layout */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 100px 70px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: left;
-    font-family: "authentic-sans";
-    font-size: var(--font-size-titel);
-    line-height: 1.3;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}                    
-
-.img_anordnung {                                                            /* bildansicht archiv */
-    width: 100; /* container breite */
-    height: 100; /* container höhe */
-    padding: 70px 20px 20px 40px;
-    display: grid; /* grid-layout */
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-    gap: 50px;
-    justify-items: center;
-    align-items: center;
-    position: relative;
-    overflow: hidden; /* verhindert das überlaufen der bilder */
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-.img_archiv:hover {
-    transform: scale(1.1); 
-}
-
-.lauftext-kontakt {                                                          /* kontakt */        
+.lauftext-kontakt { /* paragraph text kontakt */        
     max-width: 500px;
     padding: 95px 20px 30px 0px;
     justify-content: center;
@@ -265,36 +195,90 @@ video, iframe {                                                            /* vi
     color: var(--white);
     flex-shrink: 1;
     flex-wrap: wrap;
+    user-select: none;
 }
 
-.gif_kontakt {                      
+.lauftext-code { /* font size copy paste code field */                                                            
+    max-width: 400px;
+    height: auto;
+    padding: 10px 20px 10px 20px;
+    justify-content: left;
+    display: inline-flex; 
+    font-family: "authentic-sans";
+    font-size: var(--font-size-bildunterschrift);
+    line-height: 1.6;
+    color: var(--white);
+    background-color: #8a8a8a;
+    border-radius: 12px;
+    flex-shrink: 1;
+    flex-wrap: wrap;
+    user-select: none;
+}
+
+#button_instagram, #button_mail { /* buttons instagram, mail */
+    height: auto;                                    
+    display: flex;  
+    color: var(--white);  
+    background-color: var(--blue); 
+    padding: 2px 2px 2px 2px;   
+    font-family: "IBMPlexMono"; 
+    font-size: var(--font-size-untertitel);
+    border-radius: 5px; 
+    text-align: center; 
+    white-space: nowrap; 
+    border: none;
+    user-select: none;   
+}
+
+#button_instagram:hover, #button_mail:hover {
+    background-color: var(--hover-blue); 
+    cursor: pointer; 
+}          
+
+.img_archiv:hover { /* image hover effect archiv */
+    transform: scale(1.1); 
+}
+
+#button_copy_code {
+    text-align: center; 
+    white-space: nowrap; 
+    border: 2px solid var(--black);
+    font-family: "IBMPlexMono";
+    word-spacing: -5px;
+    font-size: var(--font-size-lauftext);
+    border-radius: 20px;
+    background-color: var(--green);
+    transition: box-shadow 0.2 ease-in-out;
+    user-select: none;
+    cursor: pointer;
+}
+
+#button_copy_code:active {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); 
+    transform: scale(0.98); 
+}
+
+.gif_kontakt {
     max-width: 60%;
-    height: auto; /* beibehaltung der proportionen */
+    height: auto; 
     display: flex;
     padding: 100px 0px 0px 0px;
     flex-shrink: 1;
     flex-wrap: wrap;
+    user-select: none;
 }
 
-.poster_wg {
-    width: 70%;
-    height: auto;
-    max-width: 400px;
-    margin: auto;
-    flex-shrink: 0;
-    flex-wrap: wrap;
-}
-
-.img-eo {
+.img_embodied_orchestra {
     width: 50%;
     height: auto;
     max-width: 400px;
     margin: auto;
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
-.video_fsa_01 {                                                                  /* feministisches streikhaus archiv */
+.video_fsa_01 { /* feministisches streikhaus archiv */
     display: flex;
     max-width: 90%;
     height: auto;
@@ -302,6 +286,7 @@ video, iframe {                                                            /* vi
     align-items: left;
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
 .img_fsa_01 {                                                                
@@ -312,16 +297,18 @@ video, iframe {                                                            /* vi
     align-items: left;
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
-.gif_park_platz {                                                               /* park platz */
+.gif_park_platz { /* park platz */
     max-width: 80%; 
-    height: auto; /* beibehaltung der proportionen */
+    height: auto; 
     gap: 10px; 
     overflow: hidden; 
     margin: 0px 0px 0px 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
 .img_park_platz {
@@ -332,6 +319,7 @@ video, iframe {                                                            /* vi
     margin: 0px 0px 0px 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
 #video_pp_1 {                                                                
@@ -348,6 +336,7 @@ video, iframe {                                                            /* vi
     overflow: hidden; 
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
 
 #bildtafel_1 {                                                                /* bildtafel */
@@ -358,4 +347,5 @@ video, iframe {                                                            /* vi
     margin: 0 0 0 50px; 
     flex-shrink: 0;
     flex-wrap: wrap;
+    user-select: none;
 }
