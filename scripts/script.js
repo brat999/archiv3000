@@ -94,3 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
         observer.observe(link);
     });
 });    
+
+document.querySelectorAll("a").forEach(link => {
+    let url = link.getAttribute("href");
+    if (url) {
+        link.setAttribute("data-href", url);
+        link.removeAttribute("href");
+        link.addEventListener("click", () => {
+            window.location.href = link.getAttribute("data-href");
+        });
+    }
+});
