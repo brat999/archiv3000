@@ -105,3 +105,29 @@ document.querySelectorAll("a").forEach(link => {
         });
     }
 });
+
+const flyer = document.getElementById('flyer');
+let rotationY = 0;
+let lastRotation = 0;
+let isHovering = false;
+
+flyer.addEventListener('mouseenter', () => {
+    flyer.style.animation = 'none';
+    isHovering = true;
+});
+
+flyer.addEventListener('mousemove', (e) => {
+    if (!isHovering) return;
+    let rect = flyer.getBoundingClientRect();
+    let centerX = rect.left + rect.width / 2;
+    let deltaX = e.clientX - centerX;
+    rotationY = lastRotation + deltaX * 0.5;
+    flyer.style.transform = `rotateY(${rotationY}deg)`;
+});
+
+flyer.addEventListener('mouseleave', () => {
+    isHovering = false;
+    lastRotation = rotationY;
+    flyer.style.animation = `rotateFlyer 5s linear infinite`;
+    flyer.style.transform = `rotateY(${lastRotation}deg)`;
+});
